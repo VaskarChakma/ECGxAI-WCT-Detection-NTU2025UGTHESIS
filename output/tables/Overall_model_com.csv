@@ -1,0 +1,5 @@
+Model,Avg Accuracy,F1 Score,ROC AUC,Max RMSE,Feature Stability
+XGBoost,0.6656,0.645423469,0.9995,1.0001,Medium
+LightGBM,0.6532,0.639602758,0.9998,0.9992,Lower
+RandomForest,0.6946,0.658855017,0.9996,0.9959,High
+GradientBoosting,0.6368,0.628022353,0.9999,1.0485,Lower
