@@ -1,38 +1,87 @@
-# ECG-based Wide QRS Complex Tachycardia (WCT) Detection Using Ensemble Machine Learning Models
+# 🫀 ECG-based Wide QRS Complex Tachycardia (WCT) Detection Using Ensemble Machine Learning Models
 
-This repository contains the code, data, and resources for my undergraduate thesis: **"Using the ECGxAI Model for the Diagnosis of Wide QRS Complex Tachycardia (WCT)"**. The project focuses on developing an explainable AI system to detect WCT from ECG signals using ensemble machine learning models (XGBoost, LightGBM, Random Forest, Gradient Boosting).
+This repository contains the code, data, and results for my undergraduate thesis:  
+**"Using the ECGxAI Model for the Diagnosis of Wide QRS Complex Tachycardia (WCT)"**.  
+The project focuses on developing an explainable AI system to detect WCT from ECG signals using ensemble learning techniques like XGBoost, LightGBM, Random Forest, and Gradient Boosting, evaluated through Monte Carlo simulations.
 
-## 📋 Key Features
-- **Dataset**: Uses the [MIMIC-IV-ECG](https://physionet.org/content/mimic-iv-ecg/1.0/) dataset with 800,000+ ECG recordings
-- **Models**: Implements ensemble models (XGBoost, LightGBM, etc.) for high-accuracy WCT detection
-- **Explainability**: Integrates SHAP, LIME, and feature importance analysis for model transparency
-- **Performance**: Achieves near-perfect accuracy (99.98%) and ROC AUC (1.0) in simulations
-- **Preprocessing**: Includes robust data cleaning, outlier handling, and PCA for dimensionality reduction
+---
+
+## ⚙️ Key Features
+
+- **📦 Dataset**:  
+  Uses a cleaned version of the [MIMIC-IV-ECG](https://physionet.org/content/mimic-iv-ecg/1.0/) dataset.
+
+- **📊 Machine Learning**:  
+  Implements multiple ensemble models:  
+  - XGBoost  
+  - LightGBM  
+  - Random Forest  
+  - Gradient Boosting  
+
+- **🔁 Monte Carlo Evaluation**:  
+  Repeats training/testing across 10 randomized simulations for robust metrics.
+
+- **⚖️ Imbalanced Data Handling**:  
+  Uses SMOTE to address class imbalance during training.
+
+- **🧼 Data Preprocessing**:
+  - NaN imputation using median values  
+  - Noise injection for augmentation  
+  - Standardization  
+  - Label encoding  
+  - Feature type handling
+
+- **📈 Performance Metrics**:
+  - Accuracy  
+  - F1 Score  
+  - R² Score (for probabilistic output)
+
+- **🖼️ Visualization**:
+  - Boxplots for comparing model metrics across Monte Carlo runs  
+  - Auto-saves plots for Accuracy, F1 Score, and R² Score
+
+---
 
 
+---
 
-## 📊 Results
-| Model            | Accuracy | F1 Score | ROC AUC | RMSE   |
-|------------------|----------|----------|---------|--------|
-| XGBoost          | 0.9998   | 0.9998   | 0.9999  | 0.0071 |
-| LightGBM         | 0.9997   | 0.9996   | 0.9998  | 0.0122 |
-| RandomForest     | 0.9995   | 0.9994   | 0.9996  | 0.0122 |
-| GradientBoosting | 0.9993   | 0.9992   | 0.9995  | 0.0158 |
+## 📊 Results (Monte Carlo Simulation)
 
+| Model            | Avg Accuracy | Avg F1 Score | Avg R² Score |
+|------------------|--------------|--------------|---------------|
+| XGBoost          | ~0.6656      | ~0.6454      | ~0.9995       |
+| LightGBM         | ~0.6532      | ~0.6396      | ~0.9998       |
+| RandomForest     | ~0.6946      | ~0.6589      | ~0.9996       |
+| GradientBoosting | ~0.6368      | ~0.6280      | ~0.9999       |
+
+> 📌 *Note: These values are averaged over 10 simulations with 10% test splits each time.*
+
+---
 
 ## 📖 Dataset Details
-- **Source**: [MIMIC-IV-ECG on PhysioNet]([https://physionet.org/content/mimic-iv-ecg/1.0/](https://physionet.org/content/mimic-iv-ecg/1.0/))
-- **Size**: 800,000+ ECGs from 160,000 patients
-- **Features**: RR interval, QRS duration, P/T-wave metrics, filtering parameters,......
-- **Preprocessing**: Median imputation, outlier removal, PCA
 
-## 📜 References
-1. MIMIC-IV-ECG: Diagnostic Electrocardiogram Matched Subset: Gow, B., Pollard, T., Nathanson, L. A., Johnson, A., Moody, B., Fernandes, C., Greenbaum, N., Waks, J. W., Eslami, P., Carbonati, T., Chaudhari, A., Herbst, E., Moukheiber, D., Berkowitz, S., Mark, R., & Horng, S. (2023). MIMIC-IV-ECG: Diagnostic Electrocardiogram Matched Subset (version 1.0). PhysioNet. https://doi.org/10.13026/4nqg-sb35.
+- **Source**: [MIMIC-IV-ECG on PhysioNet](https://physionet.org/content/mimic-iv-ecg/1.0/)
+- **Size**: 800,000+ ECG records from 160,000+ patients
+- **Target Variable**: WCT classification (`wct_label_encoded`)
+- **Key Features Used**:
+  - `rr_interval`, `qrs_duration`, `p_onset`, `qrs_end`, `t_axis`, `qrs_axis`, and more...
 
-
-## 🙏 Acknowledgments
-- Supervisor: Dr. Gao Zhan, Professor, School of Artificial Intelligence and Computer Science, Nantong University
+---
 
 
 
 
+## 🧠 Author
+
+**[Vaskar Chakma](https://scholar.google.com/citations?user=aE4O5HUAAAAJ&hl=en)**  
+Undergraduate Degree Student, School of Artificial Intelligence & Computer Science  
+Nantong University, China
+
+---
+## 🧠 Thesis Supervisor
+
+**[Dr. Gao Zhan](https://ai.ntu.edu.cn/2024/0817/c9718a246517/page.htm)**  
+Professor, School of Artificial Intelligence & Computer Science  
+Nantong University, China
+
+---
