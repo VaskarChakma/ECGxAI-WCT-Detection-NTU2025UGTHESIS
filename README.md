@@ -13,7 +13,7 @@ The project focuses on developing an explainable AI system to detect WCT from EC
 
 - **📊 Machine Learning Models**  
   Ensemble models used for detection:
-  - CardioForest (custom RandomForest)
+  - CardioForest (Proposed)
   - XGBoost
   - LightGBM
   - Gradient Boosting
@@ -21,6 +21,7 @@ The project focuses on developing an explainable AI system to detect WCT from EC
 - **🔁 Evaluation Technique**  
   - 10-fold Cross-Validation  
   - Data split ratio: 10:9 (Train:Test)
+  - SHAP Analysis
 
 - **⚖️ Imbalanced Data Handling**  
   - SMOTE for minority class oversampling
@@ -44,14 +45,13 @@ The project focuses on developing an explainable AI system to detect WCT from EC
 
 ## 🖼️ Framework Overview
 
-![Model Framework](path/to/your_framework_image.png)  
-*Replace the path above with your actual image filename.*
+![Model Framework](framework.png)  
 
 ---
 
 ## 📊 Results Summary
 
-| Model            | Accuracy (Test) | Balanced Accuracy (Test) | Precision (Test) | Recall (Test) | F1 Score (Test) | ROC AUC (Test) |
+| Model            | Accuracy  | Balanced Accuracy  | Precision | Recall  | F1 Score  | ROC AUC |
 |------------------|------------------|----------------------------|-------------------|----------------|------------------|----------------|
 | **CardioForest**     | 0.9495           | 0.8832                     | 0.9489            | 0.7762         | 0.8538           | 0.8833         |
 | **XGBoost**          | 0.8835           | 0.7168                     | 0.8810            | 0.4479         | 0.5937           | 0.8495         |
