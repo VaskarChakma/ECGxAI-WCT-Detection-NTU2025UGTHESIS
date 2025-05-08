@@ -2,59 +2,63 @@
 
 This repository contains the code, data, and results for my undergraduate thesis:  
 **"Using the ECGxAI Model for the Diagnosis of Wide QRS Complex Tachycardia (WCT)"**.  
-The project focuses on developing an explainable AI system to detect WCT from ECG signals using ensemble learning techniques like XGBoost, LightGBM, Random Forest, and Gradient Boosting, evaluated through Monte Carlo simulations.
+The project focuses on developing an explainable AI system to detect WCT from ECG signals using ensemble learning techniques, evaluated using 10-fold cross-validation.
 
 ---
 
 ## ⚙️ Key Features
 
-- **📦 Dataset**:  
-  Uses a cleaned version of the [MIMIC-IV-ECG](https://physionet.org/content/mimic-iv-ecg/1.0/) dataset.
+- **📦 Dataset**  
+  Utilizes the [MIMIC-IV-ECG](https://physionet.org/content/mimic-iv-ecg/1.0/) dataset, cleaned and preprocessed for machine learning tasks.
 
-- **📊 Machine Learning**:  
-  Implements multiple ensemble models:  
-  - XGBoost  
-  - LightGBM  
-  - Random Forest  
-  - Gradient Boosting  
+- **📊 Machine Learning Models**  
+  Ensemble models used for detection:
+  - CardioForest (custom RandomForest)
+  - XGBoost
+  - LightGBM
+  - Gradient Boosting
 
-- **🔁 Monte Carlo Evaluation**:  
-  Repeats training/testing across 10 randomized simulations for robust metrics.
+- **🔁 Evaluation Technique**  
+  - 10-fold Cross-Validation  
+  - Data split ratio: 10:9 (Train:Test)
 
-- **⚖️ Imbalanced Data Handling**:  
-  Uses SMOTE to address class imbalance during training.
+- **⚖️ Imbalanced Data Handling**  
+  - SMOTE for minority class oversampling
 
 - **🧼 Data Preprocessing**:
-  - NaN imputation using median values  
-  - Noise injection for augmentation  
+  - Median imputation for missing values  
   - Standardization  
+  - Noise injection  
   - Label encoding  
-  - Feature type handling
+  - Feature type optimization
 
-- **📈 Performance Metrics**:
-  - Accuracy  
-  - F1 Score  
-  - R² Score (for probabilistic output)
-
-- **🖼️ Visualization**:
-  - Boxplots for comparing model metrics across Monte Carlo runs  
-  - Auto-saves plots for Accuracy, F1 Score, and R² Score
-
----
-
+- **📈 Performance Metrics**
+  - Accuracy
+  - Balanced Accuracy
+  - Precision
+  - Recall
+  - F1 Score
+  - ROC AUC
 
 ---
 
-## 📊 Results (Monte Carlo Simulation)
+## 🖼️ Framework Overview
 
-| Model            | Avg Accuracy | Avg F1 Score | Avg R² Score |
-|------------------|--------------|--------------|---------------|
-| XGBoost          | ~0.6656      | ~0.6454      | ~0.9995       |
-| LightGBM         | ~0.6532      | ~0.6396      | ~0.9998       |
-| RandomForest     | ~0.6946      | ~0.6589      | ~0.9996       |
-| GradientBoosting | ~0.6368      | ~0.6280      | ~0.9999       |
+![Model Framework](path/to/your_framework_image.png)  
+*Replace the path above with your actual image filename.*
 
-> 📌 *Note: These values are averaged over 10 simulations with 10% test splits each time.*
+---
+
+## 📊 Results Summary
+
+| Model            | Accuracy (Test) | Balanced Accuracy (Test) | Precision (Test) | Recall (Test) | F1 Score (Test) | ROC AUC (Test) |
+|------------------|------------------|----------------------------|-------------------|----------------|------------------|----------------|
+| **CardioForest**     | 0.9495           | 0.8832                     | 0.9489            | 0.7762         | 0.8538           | 0.8833         |
+| **XGBoost**          | 0.8835           | 0.7168                     | 0.8810            | 0.4479         | 0.5937           | 0.8495         |
+| **LightGBM**         | 0.8422           | 0.6435                     | 0.6787            | 0.3229         | 0.4374           | 0.7806         |
+| **Gradient Boosting**| 0.9179           | 0.8006                     | 0.9282            | 0.6113         | 0.7214           | 0.8544         |
+
+> 📌 *Each model was evaluated with 10-fold cross-validation using a 10:9 train-test split.*
 
 ---
 
@@ -62,23 +66,21 @@ The project focuses on developing an explainable AI system to detect WCT from EC
 
 - **Source**: [MIMIC-IV-ECG on PhysioNet](https://physionet.org/content/mimic-iv-ecg/1.0/)
 - **Size**: 800,000+ ECG records from 160,000+ patients
-- **Target Variable**: WCT classification (`wct_label_encoded`)
+- **Target Variable**: Binary classification of WCT (`wct_label_encoded`)
 - **Key Features Used**:
-  - `rr_interval`, `qrs_duration`, `p_onset`, `qrs_end`, `t_axis`, `qrs_axis`, and more...
+  - `rr_interval`, `qrs_duration`, `p_onset`, `qrs_end`, `t_axis`, `qrs_axis`, etc.
 
 ---
-
-
-
 
 ## 🧠 Author
 
 **[Vaskar Chakma](https://scholar.google.com/citations?user=aE4O5HUAAAAJ&hl=en)**  
-Undergraduate Degree Student, School of Artificial Intelligence & Computer Science  
+Undergraduate Student, School of Artificial Intelligence & Computer Science  
 Nantong University, China
 
 ---
-## 🧠 Thesis Supervisor
+
+## 🎓 Thesis Supervisor
 
 **[Dr. Gao Zhan](https://ai.ntu.edu.cn/2024/0817/c9718a246517/page.htm)**  
 Professor, School of Artificial Intelligence & Computer Science  
